@@ -15,3 +15,8 @@ All notable changes to this repository are documented here. Format follows Keep 
 
 ### Changed
 - README.md index extended with ARCHITECTURE.md and PLAN.md.
+
+## [0.2.1] - 2026-08-31
+
+### Changed
+- ADR-0001 (iTwin metamodel serialization format): Open -> Accepted. JSON documents, JSON Schema normative, Pydantic in reference runtime, JSON-LD projection additive.
