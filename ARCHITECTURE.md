@@ -1,9 +1,9 @@
 # ARCHITECTURE.md: iSimulator Target Architecture
 
-**Version:** 0.2.0
+**Version:** 0.3.0
 **Status:** Active
 **Last Updated:** 2026-08-31
-**Authority:** ISIM-CR-01 (openspec/changes/ISIM-CR-01)
+**Authority:** ISIM-CR-01, ISIM-CR-02 (openspec/changes/)
 
 ---
 
@@ -97,12 +97,29 @@ The word "model" is never ambiguous in iSimulator. Five models are explicitly se
 
 An iTwin describes what the entity is. The **iTwin Execution Model** describes how that representation becomes executable. Loading an iTwin produces an executable simulation context without changing the semantic identity of the iTwin.
 
+## 3a. Framework Positioning (ISIM-CR-02)
+
+iSimulator is an integration and semantic orchestration framework: Semantic Framework + Simulation Framework + Interaction Framework, with integration adapters to external engines (DES, ABM, FMI, renderers, analytics). iSimulator owns models, composition, contracts, and provenance; it adopts proven open-source engines rather than recreating them (ADR-0002: adopt before build, Integration Decision Records, permissive license policy).
+
+Three-level engine architecture:
+
+```
+Level 1: Native Enterprise Primitives (Process, Queue, Resource, Activity, Event, Policy, Capacity)
+            |
+            v
+Level 2: iSimulator Execution Abstraction (engine-neutral execution model)
+            |
+            v
+Level 3: External Execution Engines via Simulation Adapters (SimPy, Mesa, FMI, ...)
+```
+
 ## 4. Engine Abstraction
 
 iSimulator is not a wrapper around one simulation engine. The simulation-engine abstraction supports: Discrete Event, Continuous, Discrete Time, Agent Based, System Dynamics, Hybrid, Co-Simulation.
 
 - First reference execution mode: **Discrete Event Simulation** (natural fit for enterprise processes, queues, resources, events, capacity).
-- Candidate engine: **SimPy**: an implementation dependency, never the iSimulator conceptual model.
+- **SimPy is a candidate reference engine, not "the iSimulator engine"** (ISIM-CR-02). Selection of the reference engine is by Integration Decision Record after integration testing; the enterprise architect never needs to know which engine is underneath.
+- The adapter contract (load, compile, initialize, run, pause, resume, step, observe, terminate, result) is the anti-lock-in mechanism; engine results are normalized into the iSimulator result model.
 
 ## 5. Epistemic Separation (Observation Model)
 
@@ -142,6 +159,10 @@ Every simulation result identifies: iTwin version, executable model version, sce
 Order -> Validation -> Credit -> Inventory -> Fulfillment -> Shipment -> Invoice -> Payment
 
 Each stage carries: Resource, Capacity, Processing Time, Queue, Policy, Rule, Failure Rate, SLA, Cost. Acceptance progression: Observe, Manipulate, Simulate, Compare, Explain, Forecast, Optimize, Report.
+
+## 9a. Progressive Complexity (ISIM-CR-02 section 10)
+
+Adoption path: Level 0 Primitive; Level 1 Process; Level 2 Resource; Level 3 Flow; Level 4 Policy; Level 5 Scenario; Level 6 Experiment; Level 7 Prediction; Level 8 Optimization; Level 9 Autonomous. A valid simulation is constructible from simple primitives with no engine knowledge, then progressively elaborated. Entry points: Visual Builder, Natural Language, Programmatic API, Imported Model.
 
 ## 10. Repository Responsibilities and Boundary Rule
 

@@ -20,3 +20,12 @@ All notable changes to this repository are documented here. Format follows Keep 
 
 ### Changed
 - ADR-0001 (iTwin metamodel serialization format): Open -> Accepted. JSON documents, JSON Schema normative, Pydantic in reference runtime, JSON-LD projection additive.
+
+## [0.3.0] - 2026-08-31
+
+### Added
+- ADR-0002: Technology integration policy (adopt before build, IDRs, license policy), per ISIM-CR-02.
+
+### Changed
+- ARCHITECTURE.md v0.3.0: framework positioning, three-level engine architecture, adapter contract, progressive complexity.
+- PLAN.md v0.3.0: roadmap renumbered to CR-01..CR-11 per authoritative ISIM-CR-02.

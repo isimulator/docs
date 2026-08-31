@@ -13,5 +13,6 @@ ADRs capture significant architectural decisions for iSimulator and iTwin. One f
 | ADR | Title | Status |
 |-----|-------|--------|
 | 0001 | [iTwin metamodel serialization format](0001-itwin-metamodel-format.md) | Accepted |
+| 0002 | [Technology integration policy: adopt before build](0002-technology-integration-policy.md) | Accepted |
 
 Open questions from DESIGN.md v0.1.0 section 7 are tracked here until resolved.

@@ -1,9 +1,9 @@
 # PLAN.md: iSimulator Program Plan
 
-**Version:** 0.2.0
+**Version:** 0.3.0
 **Status:** Active
 **Last Updated:** 2026-08-31
-**Authority:** ISIM-CR-01 (Interactive Semantic Simulation Architecture)
+**Authority:** ISIM-CR-01 (architecture), ISIM-CR-02 (reusable simulation framework)
 
 ---
 
@@ -28,14 +28,14 @@ Phasing is CR-driven. Each phase ends when its CR acceptance criteria are met ag
 | Phase | CR | Goal |
 |-------|-----|------|
 | Phase 0 Foundation Hardening | ISIM-CR-01 | Coherent target architecture: ARCHITECTURE.md, five-model separation, repo responsibilities, ADR structure |
-| Phase 1 Executable iTwin Model | ISIM-CR-02 | Machine-readable iTwin: Entity, State, Event, Process, Resource, Control, Scenario; OTCHERE golden-path model |
-| Phase 2 Simulation Kernel | ISIM-CR-03 | isimulator-core: model loader, event scheduler, state manager, metrics; DES first via engine abstraction |
-| Phase 3 Scenario & Experiment | ISIM-CR-04 | Scenarios, replications, parameter sweeps, comparison, provenance |
-| Phase 4 Twin Studio | ISIM-CR-06 | Interactive visual environment (earns isimulator-studio); Runtime API (ISIM-CR-05) precedes it |
-| Phase 5 Forecast & Analytics | ISIM-CR-07 | Forecast, prediction, sensitivity, optimization, confidence |
-| Phase 6 Local AI Interaction | ISIM-CR-08 | LLM gateway, context builder, tool registry; LLM as typed client, never inside the kernel |
-| Phase 7 Synchronization | ISIM-CR-09 | Observation ingestion, reconciliation, live twin state (earns isimulator-connectors) |
-| Phase 8 Autonomous Loop | ISIM-CR-10 | Observe-Understand-Simulate-Predict-Evaluate-Decide-Act closed loop |
+| Phase 1 Executable iTwin Model | ISIM-CR-02 | Reusable Simulation Framework: primitive library, composition model, declarative simulation spec, adapter contract, progressive complexity |
+| Phase 2 Simulation Kernel | ISIM-CR-03 | Reference Engine Integration: engine landscape assessment, IDRs, first adapter proven against the golden path |
+| Phase 3 Scenario & Experiment | ISIM-CR-04 | Scenario Experiment Framework: replications, parameter sweeps, comparison, provenance |
+| Phase 4 Twin Studio | ISIM-CR-06 | Simulation Builder / Studio: composition canvas, not just visualization; Runtime API (ISIM-CR-05) precedes it |
+| Phase 5 Forecast & Analytics | ISIM-CR-07 | Analytics, Forecasting, Optimization as integrated external capabilities |
+| Phase 6 Local AI Interaction | ISIM-CR-08 | LLM generates and manipulates primitives/scenarios, never opaque simulation code |
+| Phase 7 Synchronization | ISIM-CR-10 | Operational Twin Synchronization (CR-09 Visualization Engine Integrations slots before it) |
+| Phase 8 Autonomous Loop | ISIM-CR-11 | Observe-Understand-Simulate-Predict-Evaluate-Decide-Act closed loop |
 
 ## 3. Epic Map (board items)
 
@@ -57,7 +57,7 @@ Phasing is CR-driven. Each phase ends when its CR acceptance criteria are met ag
 | ISIM-CR-04: Scenario Experiment Engine | isimulator-core#3 | Phase 3 | P1 |
 | ISIM-CR-05..CR-10 roadmap tracker | docs#2 | Phase 4 | P2 |
 
-CR-05 through CR-10 are tracked in one roadmap epic until their repository boundaries are earned (ARCHITECTURE.md section 10).
+CR-05 through CR-11 are tracked in one roadmap epic until their repository boundaries are earned (ARCHITECTURE.md section 10). ISIM-CR-09 (Visualization Engine Integrations) was added by the authoritative CR-02.
 
 ## 4. Current Milestone: v0.2.0 Specifications
 
@@ -65,7 +65,7 @@ Defined in: openspec, itwin-spec, docs, itwin-enterprise, itwin-catalogs.
 
 Exit criteria:
 
-1. ADR-0001 (iTwin metamodel serialization) resolved; ISIM-CR-01 recommendation is JSON + JSON Schema + Pydantic with RDF/JSON-LD-capable identifiers.
+1. ADR-0001 (iTwin metamodel serialization) resolved: JSON + JSON Schema + Pydantic, JSON-LD projection additive. ADR-0002 (technology integration policy) resolved: adopt before build, Integration Decision Records, permissive license policy.
 2. openspec change-delta workflow demonstrated end-to-end: ISIM-CR-01 lands as changes/ISIM-CR-01.
 3. itwin-spec v0.1.0 covers: Entity anchor, semantics, behavior, operations, control, temporal stipulations, execution-model boundary.
 4. Organization iTwin spec v0.1.0 drafted against OpenDEAM catalogs.
