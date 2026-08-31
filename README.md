@@ -12,6 +12,8 @@ Design documents, organization specification, glossary, and architecture decisio
 
 | Document | Purpose |
 |----------|---------|
+| [ARCHITECTURE.md](ARCHITECTURE.md) | Target logical architecture (ISIM-CR-01): layers, five models, boundaries |
+| [PLAN.md](PLAN.md) | Program plan: board, CR-driven phasing, milestones |
 | [DESIGN.md](DESIGN.md) | Conceptual and structural design; iTwin definition; standards positioning |
 | [ORG.md](ORG.md) | GitHub organization structure, naming, governance, repository layout |
 | [glossary.md](glossary.md) | Canonical terms (iTwin, iSimulator, Organization iTwin, Entity, ...) |
