@@ -1,3 +1,8 @@
+## [0.3.1] - 2026-09-02
+
+### Added
+- ADR-0003 / IDR-0001: SimPy as first reference simulation engine (per ISIM-CR-03; ADR-0002 evaluation model).
+
 # Changelog
 
 All notable changes to this repository are documented here. Format follows Keep a Changelog; versioning is semantic.
